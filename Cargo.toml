@@ -1,0 +1,41 @@
+[package]
+name = "near-token"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+near-contract-standards = "4.0.0"
+near-sdk-contract-tools = "1.1.0"
+near-sdk = "4.1.1"
+near-sys = "0.2.0"
+serde = "1.0.144"
+
+[dev-dependencies]
+near-workspaces = "0.8.0"
+tokio = "1.21.1"
+
+[lib]
+name = "fiat_token"
+crate-type = ["cdylib"]
+
+# For production.
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+
+# For local dev, etc.
+[profile.dev]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
