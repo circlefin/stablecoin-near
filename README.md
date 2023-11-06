@@ -22,6 +22,11 @@ $ brew install rustup
 $ rustup install 1.69.0
 ```
 
+### Set Rust v1.69.0 as default
+```
+$ rustup default 1.69.0
+```
+
 Add to PATH
 ```
 $ source $HOME/.cargo/env
