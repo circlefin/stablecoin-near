@@ -1,4 +1,4 @@
-### Circle stablecoins on NEAR
+# Circle stablecoins on NEAR
 Implementation of a Circle stablecoin on NEAR following [near-contract-standards](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards).
 
 ### Rust v1.70.0 incompatibility issues
@@ -7,7 +7,7 @@ They suggest using a flag from `wasm-opt` to disable sign extensions.
 
 We have decided to use Rust v1.69.0 for now.
 
-#### Install Rust v1.69.0 for development
+### Install Rust v1.69.0 for development
 ```
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain=1.69.0 -y
 ```
