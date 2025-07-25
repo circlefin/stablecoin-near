@@ -21,7 +21,7 @@ use near_sdk::{
     AccountId,
 };
 use near_sdk_contract_tools::standard::nep148::FungibleTokenMetadata;
-use near_workspaces::{Account, Contract};
+use near_workspaces::{types::NearToken, Account, Contract};
 
 const FIAT_TOKEN_WASM: &[u8] = include_bytes!("./data/fiat_token.wasm");
 // Upgraded version of the contract that changes the multi-sig request's validity period to 1 ns.
@@ -465,7 +465,7 @@ async fn test_approve_increase_decrease_allowance_transfer_from() {
     transfer_receiver
         .call(contract.id(), "storage_deposit")
         .args_json(json!({ "account_id": transfer_receiver.id() }))
-        .deposit(ACCOUNT_STORAGE_COST)
+        .deposit(NearToken::from_yoctonear(ACCOUNT_STORAGE_COST))
         .transact()
         .await
         .unwrap()
@@ -543,7 +543,7 @@ async fn test_approve_twice_transfer_from() {
     transfer_receiver
         .call(contract.id(), "storage_deposit")
         .args_json(json!({ "account_id": transfer_receiver.id() }))
-        .deposit(ACCOUNT_STORAGE_COST)
+        .deposit(NearToken::from_yoctonear(ACCOUNT_STORAGE_COST))
         .transact()
         .await
         .unwrap()
@@ -1092,7 +1092,7 @@ async fn test_ft_transfer() {
             "receiver_id": transfer_receiver.id(),
             "amount": U128::from(transfer_amount),
         }))
-        .deposit(1)
+        .deposit(NearToken::from_yoctonear(1))
         .transact()
         .await
         .unwrap();
@@ -1102,7 +1102,7 @@ async fn test_ft_transfer() {
     transfer_receiver
         .call(contract.id(), "storage_deposit")
         .args_json(json!({ "account_id": transfer_receiver.id(), "registration_only": false}))
-        .deposit(ACCOUNT_STORAGE_COST)
+        .deposit(NearToken::from_yoctonear(ACCOUNT_STORAGE_COST))
         .transact()
         .await
         .unwrap()
@@ -1127,7 +1127,7 @@ async fn test_ft_transfer() {
             "receiver_id": transfer_receiver.id(),
             "amount": U128::from(transfer_amount),
         }))
-        .deposit(1)
+        .deposit(NearToken::from_yoctonear(1))
         .transact()
         .await
         .unwrap();
@@ -1549,7 +1549,7 @@ async fn mint(contract: Contract, minter: Account, to: Account, mint_amount: u12
     // Register to/receiver with token to be able to receive mints.
     to.call(contract.id(), "storage_deposit")
         .args_json(json!({ "account_id": to.id() }))
-        .deposit(ACCOUNT_STORAGE_COST)
+        .deposit(NearToken::from_yoctonear(ACCOUNT_STORAGE_COST))
         .transact()
         .await
         .unwrap()
