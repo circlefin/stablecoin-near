@@ -11,9 +11,10 @@ near-sdk-contract-tools = "=1.1.1"
 near-sdk = "4.1.1"
 near-sys = "0.2.0"
 serde = "1.0.144"
+near-sandbox = "0.2.0"
 
 [dev-dependencies]
-near-workspaces = "=0.7.0"
+near-workspaces = "0.11.0"
 tokio = "1.21.1"
 
 [lib]
